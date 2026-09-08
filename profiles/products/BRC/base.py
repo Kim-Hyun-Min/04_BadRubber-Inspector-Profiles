@@ -9,6 +9,10 @@ def build_profile(checkpoint_root: str) -> Profile:
     return replace(
         base,
         family="BR-C",
+        bgremover={
+            **base.bgremover,
+            "mask_mode": "and",
+        },
         baler_classifier={
             "checkpoint": f"{root}/baler/weights/BR-C/br_c_all_paired/best_model.pth",
             "img_size": 224,

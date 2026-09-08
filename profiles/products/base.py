@@ -3,7 +3,7 @@ from profiles._schema import Profile
 _SHOW = {
     "anomaly_map": False,
     "anomaly_score": False,
-    "foreground": False,
+    "foreground": True,
     "anomaly_regions_polygon": False,
     "anomaly_regions_bbox": False,
     "segmentation_regions_polygon": False,
@@ -19,7 +19,7 @@ def build_profile(checkpoint_root: str) -> Profile:
         bgremover={
             "checkpoint": f"{root}/defect/rmbg/weights/_intergrated/full-line/rmbg_0709/weights/best.pt",
             "imgsz": 640,
-            "postprocess": True,
+            "mask_mode": "postprocess",
             "core_hull_resize_scale": 0.25,
             "core_hull_mask_threshold": 0.9,
             "core_hull_erode_kernel": 81,
